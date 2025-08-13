@@ -1,0 +1,95 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "PitControl.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/PitControl.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PitControl.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PitControl.Domain/1.0.0": {
+      "type": "project",
+      "path": "../PitControl.Domain/PitControl.Domain.csproj",
+      "msbuildProject": "../PitControl.Domain/PitControl.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "PitControl.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\higor\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\higor\\Documents\\PitControl\\PitControl.Infra.Data\\PitControl.Infra.Data.csproj",
+      "projectName": "PitControl.Infra.Data",
+      "projectPath": "C:\\Users\\higor\\Documents\\PitControl\\PitControl.Infra.Data\\PitControl.Infra.Data.csproj",
+      "packagesPath": "C:\\Users\\higor\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\higor\\Documents\\PitControl\\PitControl.Infra.Data\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\higor\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "C:\\Users\\higor\\Documents\\PitControl\\PitControl.Domain\\PitControl.Domain.csproj": {
+              "projectPath": "C:\\Users\\higor\\Documents\\PitControl\\PitControl.Domain\\PitControl.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3z+DkZfs2/w=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\higor\\Documents\\PitControl\\PitControl.Api\\PitControl.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\higor\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.8\\microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
+    "C:\\Users\\higor\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
