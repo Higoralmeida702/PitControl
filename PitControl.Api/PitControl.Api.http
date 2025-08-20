@@ -1,0 +1,6 @@
+@PitControl.Api_HostAddress = http://localhost:5191
+
+GET {{PitControl.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

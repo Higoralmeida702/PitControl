@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\PitControl.Domain\PitControl.Domain.csproj" />
+    <ProjectReference Include="..\PitControl.Application\PitControl.Application.csproj" />
+    <ProjectReference Include="..\PitControl.Infra.Data\PitControl.Infra.Data.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
