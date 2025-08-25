@@ -2,7 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PitControl.Application.Interfaces;
+using PitControl.Application.Services;
+using PitControl.Domain.Interfaces;
 using PitControl.Infra.Data.Data;
+using PitControl.Infra.Data.Repository;
 
 namespace PitControl.Infra.Ioc
 {
@@ -15,6 +19,9 @@ namespace PitControl.Infra.Ioc
                     configuration.GetConnectionString("DefaultConnection"),
                     ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))
                 ));
+
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IProdutoService, ProdutoService>();
 
             return services;
         }
