@@ -55,16 +55,16 @@ namespace PitControl.Domain.Model
             CategoriaPeca = categoria;
             DataDeCadastro = DateTime.Now;
             Codigo = GerarCodigoAleatorio(categoria);
-            ValidateDomain(nomePeca, Codigo, fabricante, localizacaoEstoque, peso, altura, largura, comprimento, dataDeCadastro, fornecedorId);
+            ValidateDomain(nomePeca, fabricante, localizacaoEstoque, peso, altura, largura, comprimento, dataDeCadastro, fornecedorId);
         }
 
 
-        public void Update(string nomePeca, string codigo, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, DateTime dataDeCadastro, int fornecedorId)
+        public void Update(string nomePeca, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, DateTime dataDeCadastro, int fornecedorId)
         {
-            ValidateDomain(nomePeca, codigo, fabricante, localizacaoEstoque, peso, altura, largura, comprimento, dataDeCadastro, fornecedorId);
+            ValidateDomain(nomePeca, fabricante, localizacaoEstoque, peso, altura, largura, comprimento, dataDeCadastro, fornecedorId);
         }
 
-        private void ValidateDomain(string nomePeca, string codigo, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, DateTime dataDeCadastro, int fornecedorId)
+        private void ValidateDomain(string nomePeca, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, DateTime dataDeCadastro, int fornecedorId)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(nomePeca), "Nome da peça é obrigatório");
             DomainExceptionValidation.When(string.IsNullOrEmpty(fabricante), "Fabricante é obrigatório");
@@ -75,7 +75,6 @@ namespace PitControl.Domain.Model
             DomainExceptionValidation.When(comprimento <= 0, "Comprimento deve ser maior que zero.");
 
             NomePeca = nomePeca;
-            Codigo = codigo;
             Fabricante = fabricante;
             LocalizacaoEstoque = localizacaoEstoque;
             Peso = peso;
