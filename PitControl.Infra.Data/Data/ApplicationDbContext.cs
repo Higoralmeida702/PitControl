@@ -18,10 +18,10 @@ namespace PitControl.Infra.Data.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Produto>()
-            .HasOne<Fornecedor>()
-            .WithMany()
-            .HasForeignKey(p => p.FornecedorId)
-            .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(p => p.Fornecedor)        
+                .WithMany()                  
+                .HasForeignKey(p => p.FornecedorId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<ProdutoEmEstoque>()
                 .HasOne(pe => pe.Produto)

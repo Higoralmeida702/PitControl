@@ -22,6 +22,8 @@ namespace PitControl.Infra.Ioc
 
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<IFornecedorRepository, FornecedorRepository>();
+            services.AddScoped<IFornecedorService, FornecedorService>();
 
             return services;
         }
