@@ -34,7 +34,7 @@ namespace PitControl.Api.Controllers
 
             var produto = await _service.UpdateProduto(id, produtoDto);
 
-            if (!produto.Sucesso)
+            if (!produto.Status)
                 return NotFound(produto.Mensagem);
 
             return Ok(produto);
@@ -52,7 +52,7 @@ namespace PitControl.Api.Controllers
         {
             var produto = await _service.GetById(id);
 
-            if (!produto.Status == true)
+            if (!produto.Status)
                 return NotFound(produto.Mensagem);
 
             return Ok(produto);
@@ -63,7 +63,7 @@ namespace PitControl.Api.Controllers
         {
             var produto = await _service.DeleteProduto(id);
 
-            if (!!produto.Status == true)
+            if (!produto.Status)
                 return NotFound(produto.Mensagem);
 
             return Ok(produto);

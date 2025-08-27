@@ -27,7 +27,6 @@ namespace PitControl.Application.Services
                 produtoDto.Altura,
                 produtoDto.Largura,
                 produtoDto.Comprimento,
-                produtoDto.DataDeCadastro,
                 produtoDto.FornecedorId
             );
 
@@ -84,7 +83,6 @@ namespace PitControl.Application.Services
                 produtoDto.Altura,
                 produtoDto.Largura,
                 produtoDto.Comprimento,
-                produtoDto.DataDeCadastro,
                 produtoDto.FornecedorId
             );
 

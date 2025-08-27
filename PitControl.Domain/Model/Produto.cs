@@ -1,4 +1,5 @@
 
+using System.ComponentModel.DataAnnotations;
 using PitControl.Domain.Enum;
 using PitControl.Domain.Validation;
 
@@ -7,6 +8,7 @@ namespace PitControl.Domain.Model
     public class Produto
     {
         public int Id { get; private set; }
+
         public string NomePeca { get; private set; }
         public string Codigo { get; private set; }
         public string Fabricante { get; private set; }
@@ -49,30 +51,29 @@ namespace PitControl.Domain.Model
 
             return $"{prefixo}-{codigoGerado}";
         }
-
-        public Produto(string nomePeca, CategoriaDaPeca categoria, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, DateTime dataDeCadastro, int fornecedorId)
+        public Produto(string nomePeca, CategoriaDaPeca categoria, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, int fornecedorId)
         {
             CategoriaPeca = categoria;
-            DataDeCadastro = DateTime.Now;
             Codigo = GerarCodigoAleatorio(categoria);
-            ValidateDomain(nomePeca, fabricante, localizacaoEstoque, peso, altura, largura, comprimento, dataDeCadastro, fornecedorId);
+            DataDeCadastro = DateTime.Now;
+
+            ValidateDomain(nomePeca, fabricante, localizacaoEstoque, peso, altura, largura, comprimento, fornecedorId);
+        }
+        public void Update(string nomePeca, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, int fornecedorId)
+        {
+            ValidateDomain(nomePeca, fabricante, localizacaoEstoque, peso, altura, largura, comprimento, fornecedorId);
         }
 
-
-        public void Update(string nomePeca, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, DateTime dataDeCadastro, int fornecedorId)
+        private void ValidateDomain(string nomePeca, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, int fornecedorId)
         {
-            ValidateDomain(nomePeca, fabricante, localizacaoEstoque, peso, altura, largura, comprimento, dataDeCadastro, fornecedorId);
-        }
-
-        private void ValidateDomain(string nomePeca, string fabricante, string localizacaoEstoque, decimal peso, decimal altura, decimal largura, decimal comprimento, DateTime dataDeCadastro, int fornecedorId)
-        {
-            DomainExceptionValidation.When(string.IsNullOrEmpty(nomePeca), "Nome da peça é obrigatório");
-            DomainExceptionValidation.When(string.IsNullOrEmpty(fabricante), "Fabricante é obrigatório");
-            DomainExceptionValidation.When(string.IsNullOrEmpty(localizacaoEstoque), "Localização no estoque é obrigatória");
+            DomainExceptionValidation.When(string.IsNullOrWhiteSpace(nomePeca), "Nome da peça é obrigatório.");
+            DomainExceptionValidation.When(string.IsNullOrWhiteSpace(fabricante), "Fabricante é obrigatório.");
+            DomainExceptionValidation.When(string.IsNullOrWhiteSpace(localizacaoEstoque), "Localização no estoque é obrigatória.");
             DomainExceptionValidation.When(peso <= 0, "Peso deve ser maior que zero.");
             DomainExceptionValidation.When(altura <= 0, "Altura deve ser maior que zero.");
             DomainExceptionValidation.When(largura <= 0, "Largura deve ser maior que zero.");
             DomainExceptionValidation.When(comprimento <= 0, "Comprimento deve ser maior que zero.");
+            DomainExceptionValidation.When(fornecedorId <= 0, "FornecedorId inválido.");
 
             NomePeca = nomePeca;
             Fabricante = fabricante;
@@ -81,9 +82,8 @@ namespace PitControl.Domain.Model
             Altura = altura;
             Largura = largura;
             Comprimento = comprimento;
-            DataDeCadastro = dataDeCadastro;
             FornecedorId = fornecedorId;
         }
-    }
 
+    }
 }
