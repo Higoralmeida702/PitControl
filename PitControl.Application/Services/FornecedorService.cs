@@ -13,14 +13,25 @@ namespace PitControl.Application.Services
     public class FornecedorService : IFornecedorService
     {
         private readonly IFornecedorRepository _repository;
+        private readonly ViaCepService _viaCepService;
 
-        public FornecedorService(IFornecedorRepository repository)
+        public FornecedorService(IFornecedorRepository repository, ViaCepService viaCepService)
         {
             _repository = repository;
+            _viaCepService = viaCepService;
         }
 
         public async Task<Resposta<Fornecedor>> AddFornecedor(FornecedorDto fornecedorDto)
         {
+            if (!string.IsNullOrEmpty(fornecedorDto.Cep) && string.IsNullOrEmpty(fornecedorDto.Logradouro))
+            {
+                var endereco = await _viaCepService.GetEnderecoByCep(fornecedorDto.Cep);
+
+                fornecedorDto.Logradouro = endereco.Logradouro;
+                fornecedorDto.Bairro = endereco.Bairro;
+                fornecedorDto.Localidade = endereco.Localidade;
+                fornecedorDto.Regiao = endereco.Regiao;
+            }
             var fornecedor = new Fornecedor
             (
                 fornecedorDto.NomeFornecedor,
@@ -73,6 +84,16 @@ namespace PitControl.Application.Services
             if (fornecedor == null)
             {
                 return new Resposta<Fornecedor>(null, "Fornecedor não encontrado", false);
+            }
+
+            if (!string.IsNullOrEmpty(fornecedorDto.Cep) && string.IsNullOrEmpty(fornecedorDto.Logradouro))
+            {
+                var endereco = await _viaCepService.GetEnderecoByCep(fornecedorDto.Cep);
+
+                fornecedorDto.Logradouro = endereco.Logradouro;
+                fornecedorDto.Bairro = endereco.Bairro;
+                fornecedorDto.Localidade = endereco.Localidade;
+                fornecedorDto.Regiao = endereco.Regiao;
             }
 
             fornecedor.Update
